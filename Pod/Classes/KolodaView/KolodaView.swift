@@ -458,7 +458,8 @@ open class KolodaView: UIView, DraggableCardDelegate {
         
         let scale = cardParameters.scale
         lastCard.layer.transform = CATransform3DScale(CATransform3DIdentity, scale.width, scale.height, 1)
-        lastCard.isHidden = true
+        // modified because last card addition animation isn't smooth when isLoop == true
+        lastCard.isHidden = !isLoop
         lastCard.isUserInteractionEnabled = true
         
         if let card = visibleCards.last {
